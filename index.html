@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Student Chill Zone & Study Dashboard</title>
+    <title>Smart Student Focus & Study Dashboard</title>
 
     <!-- Typography: SF Pro Display / Inter Fallback via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -225,18 +225,18 @@
             flex: 1;
         }
 
-        .col-span-8  { grid-column: span 8; }
-        .col-span-4  { grid-column: span 4; }
+        .col-span-7 { grid-column: span 7; }
+        .col-span-5 { grid-column: span 5; }
 
         @media (max-width: 1024px) {
-            .col-span-8, .col-span-4 { grid-column: span 12; }
+            .col-span-7, .col-span-5 { grid-column: span 12; }
         }
 
         .dashboard-section {
-            padding: 24px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .section-header {
@@ -266,11 +266,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 28px;
             position: relative;
+            margin: auto 0;
         }
 
-        /* Segmented Control with Animated Sliding Indicator */
         .timer-modes {
             position: relative;
             display: flex;
@@ -279,10 +279,9 @@
             border-radius: 999px;
             border: 1px solid var(--input-border);
             width: 100%;
-            max-width: 330px;
+            max-width: 340px;
         }
 
-        /* Fluid background slider */
         .sliding-pill-indicator {
             position: absolute;
             top: 4px;
@@ -318,8 +317,8 @@
 
         .ring-wrapper {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -355,7 +354,7 @@
         }
 
         .time-text {
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 700;
             letter-spacing: -0.03em;
             font-variant-numeric: tabular-nums;
@@ -384,7 +383,7 @@
         .btn-primary-action {
             background: var(--accent-active);
             color: #FFFFFF;
-            padding: 10px 24px;
+            padding: 12px 28px;
             font-weight: 600;
             font-size: 15px;
             box-shadow: 0 4px 14px rgba(0, 113, 227, 0.25);
@@ -394,98 +393,14 @@
         .btn-secondary-action {
             background: var(--input-bg);
             color: var(--text-primary);
-            padding: 10px 18px;
+            padding: 12px 20px;
             font-weight: 500;
             font-size: 14px;
             border: 1px solid var(--input-border);
         }
 
         /* ==========================================================================
-           6. AMBIENT SOUND GENERATOR
-           ========================================================================== */
-        .ambient-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .ambient-track-card {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-radius: 16px;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-        }
-
-        .track-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .track-title {
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .track-toggle-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--surface-card);
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 1px solid var(--border-card);
-        }
-
-        .ambient-track-card.active .track-toggle-btn {
-            background: var(--accent-blue);
-            color: #FFFFFF;
-        }
-
-        .volume-slider-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .volume-slider-wrapper i {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background: var(--input-border);
-            padding: 0;
-            border: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent-blue);
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-
-        /* ==========================================================================
-           7. SMART ASSIGNMENT TRACKER
+           6. SMART ASSIGNMENT TRACKER
            ========================================================================== */
         .task-input-form {
             display: flex;
@@ -511,7 +426,7 @@
         .btn-add-task {
             background: var(--accent-blue);
             color: #FFFFFF;
-            padding: 0 18px;
+            padding: 0 20px;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -521,8 +436,8 @@
         .task-list-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 380px;
+            gap: 12px;
+            max-height: 480px;
             overflow-y: auto;
             padding-right: 4px;
         }
@@ -531,7 +446,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 16px;
+            padding: 16px 18px;
             border-radius: 14px;
             background: var(--input-bg);
             border: 1px solid var(--input-border);
@@ -548,8 +463,8 @@
         }
 
         .task-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             border: 2px solid var(--text-secondary);
             cursor: pointer;
@@ -569,12 +484,12 @@
         .task-info {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
             overflow: hidden;
         }
 
         .task-title {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
@@ -604,7 +519,7 @@
 
         .deadline-badge {
             font-size: 11px;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 999px;
             font-weight: 600;
             display: flex;
@@ -620,12 +535,12 @@
         .btn-delete-task {
             background: transparent;
             color: var(--text-tertiary);
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .btn-delete-task:hover {
@@ -635,13 +550,13 @@
 
         .empty-state {
             text-align: center;
-            padding: 32px 16px;
+            padding: 48px 16px;
             color: var(--text-secondary);
             font-size: 14px;
         }
 
         /* ==========================================================================
-           8. FOOTER
+           7. FOOTER
            ========================================================================== */
         footer.dashboard-footer {
             margin-top: auto;
@@ -677,13 +592,12 @@
     <main class="dashboard-grid">
 
         <!-- Focus Timer Column -->
-        <section class="glass-card dashboard-section col-span-4">
+        <section class="glass-card dashboard-section col-span-5">
             <div class="section-header">
                 <h2 class="section-title"><i class="fa-solid fa-stopwatch"></i> Focus Timer</h2>
             </div>
 
             <div class="timer-container">
-                <!-- Segmented control with physical sliding indicator -->
                 <div class="timer-modes" id="timer-modes-container">
                     <div id="sliding-pill" class="sliding-pill-indicator"></div>
                     <button class="mode-btn active" data-mode="focus" data-index="0">Focus</button>
@@ -709,79 +623,34 @@
             </div>
         </section>
 
-        <!-- Right Side Stack -->
-        <div class="col-span-8" style="display: flex; flex-direction: column; gap: 24px;">
-            
-            <!-- Tasks -->
-            <section class="glass-card dashboard-section">
-                <div class="section-header">
-                    <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Assignments & Tasks</h2>
-                </div>
+        <!-- Task Tracker Column -->
+        <section class="glass-card dashboard-section col-span-7">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Assignments & Tasks</h2>
+            </div>
 
-                <form id="task-form" class="task-input-form">
-                    <input type="text" id="task-title-input" placeholder="Assignment title..." required>
-                    <select id="task-subject-input" required>
-                        <option value="" disabled selected>Subject</option>
-                        <option value="Math">Math</option>
-                        <option value="Programming">Programming</option>
-                        <option value="English">English</option>
-                        <option value="Science">Science</option>
-                        <option value="General">General</option>
-                    </select>
-                    <input type="datetime-local" id="task-deadline-input" required>
-                    <button type="submit" class="btn-add-task"><i class="fa-solid fa-plus"></i> Add</button>
-                </form>
+            <form id="task-form" class="task-input-form">
+                <input type="text" id="task-title-input" placeholder="Assignment title..." required>
+                <select id="task-subject-input" required>
+                    <option value="" disabled selected>Subject</option>
+                    <option value="Math">Math</option>
+                    <option value="Programming">Programming</option>
+                    <option value="English">English</option>
+                    <option value="Science">Science</option>
+                    <option value="General">General</option>
+                </select>
+                <input type="datetime-local" id="task-deadline-input" required>
+                <button type="submit" class="btn-add-task"><i class="fa-solid fa-plus"></i> Add</button>
+            </form>
 
-                <div id="task-list-container" class="task-list-container"></div>
-            </section>
+            <div id="task-list-container" class="task-list-container"></div>
+        </section>
 
-            <!-- Soundscape -->
-            <section class="glass-card dashboard-section">
-                <div class="section-header">
-                    <h2 class="section-title"><i class="fa-solid fa-headphones"></i> Chill Zone Soundscape</h2>
-                </div>
-
-                <div class="ambient-grid">
-                    <div class="ambient-track-card" data-track="rain">
-                        <div class="track-meta">
-                            <span class="track-title"><i class="fa-solid fa-cloud-rain"></i> Heavy Rain</span>
-                            <button class="track-toggle-btn" data-track="rain"><i class="fa-solid fa-play"></i></button>
-                        </div>
-                        <div class="volume-slider-wrapper">
-                            <i class="fa-solid fa-volume-low"></i>
-                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-track="rain">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </div>
-                    </div>
-
-                    <div class="ambient-track-card" data-track="ocean">
-                        <div class="track-meta">
-                            <span class="track-title"><i class="fa-solid fa-water"></i> Ocean Waves</span>
-                            <button class="track-toggle-btn" data-track="ocean"><i class="fa-solid fa-play"></i></button>
-                        </div>
-                        <div class="volume-slider-wrapper">
-                            <i class="fa-solid fa-volume-low"></i>
-                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-track="ocean">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </div>
-                    </div>
-
-                    <div class="ambient-track-card" data-track="cafe">
-                        <div class="track-meta">
-                            <span class="track-title"><i class="fa-solid fa-mug-hot"></i> Cozy Cafe</span>
-                            <button class="track-toggle-btn" data-track="cafe"><i class="fa-solid fa-play"></i></button>
-                        </div>
-                        <div class="volume-slider-wrapper">
-                            <i class="fa-solid fa-volume-low"></i>
-                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-track="cafe">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div>
     </main>
+
+    <footer class="dashboard-footer">
+        <p>Smart Student Focus & Study Dashboard &bull; Designed following Apple HIG Standards</p>
+    </footer>
 
     <!-- Logic Engine -->
     <script>
@@ -807,12 +676,7 @@
                     isRunning: false,
                     intervalId: null
                 },
-                tasks: JSON.parse(localStorage.getItem('app_tasks')) || [],
-                ambientSounds: {
-                    rain: { audio: null, isPlaying: false, url: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3' },
-                    ocean: { audio: null, isPlaying: false, url: 'https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a7304b.mp3' },
-                    cafe: { audio: null, isPlaying: false, url: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_83a1a9e88d.mp3' }
-                }
+                tasks: JSON.parse(localStorage.getItem('app_tasks')) || []
             };
 
             /* DOM CACHE */
@@ -835,11 +699,7 @@
                 taskTitleInput: document.getElementById('task-title-input'),
                 taskSubjectInput: document.getElementById('task-subject-input'),
                 taskDeadlineInput: document.getElementById('task-deadline-input'),
-                taskListContainer: document.getElementById('task-list-container'),
-
-                ambientCards: document.querySelectorAll('.ambient-track-card'),
-                ambientToggleBtns: document.querySelectorAll('.track-toggle-btn'),
-                volumeSliders: document.querySelectorAll('.volume-slider')
+                taskListContainer: document.getElementById('task-list-container')
             };
 
             /* THEME & GREETING */
@@ -938,25 +798,20 @@
                 renderTimer();
             }
 
-            /* Smooth Sliding Mode Switcher */
             function switchTimerMode(newMode, btnIndex) {
                 if (STATE.timer.mode === newMode) return;
 
                 STATE.timer.mode = newMode;
 
-                // 1. Sliding Pill Position Physics
                 DOM.slidingPill.style.transform = `translateX(${btnIndex * 100}%)`;
 
-                // 2. Color Scheme Accent Transition
                 const activeColor = STATE.timer.colors[newMode];
                 document.documentElement.style.setProperty('--accent-active', activeColor);
 
-                // 3. Update Active Button State
                 DOM.timerModeBtns.forEach((btn, idx) => {
                     btn.classList.toggle('active', idx === parseInt(btnIndex));
                 });
 
-                // 4. Smooth Text Morph Effect
                 DOM.timerCountdown.classList.add('mode-changing');
                 setTimeout(() => {
                     resetTimer();
@@ -980,50 +835,6 @@
                 } catch (e) {}
             }
 
-            /* AMBIENT SOUNDS */
-            function initAmbientSounds() {
-                Object.keys(STATE.ambientSounds).forEach(trackKey => {
-                    const sound = STATE.ambientSounds[trackKey];
-                    sound.audio = new Audio(sound.url);
-                    sound.audio.loop = true;
-                    sound.audio.volume = 0.5;
-                });
-
-                DOM.ambientToggleBtns.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        toggleAmbientTrack(e.currentTarget.dataset.track);
-                    });
-                });
-
-                DOM.volumeSliders.forEach(slider => {
-                    slider.addEventListener('input', (e) => {
-                        const trackKey = e.target.dataset.track;
-                        const volume = parseFloat(e.target.value);
-                        if (STATE.ambientSounds[trackKey].audio) {
-                            STATE.ambientSounds[trackKey].audio.volume = volume;
-                        }
-                    });
-                });
-            }
-
-            function toggleAmbientTrack(trackKey) {
-                const sound = STATE.ambientSounds[trackKey];
-                const card = document.querySelector(`.ambient-track-card[data-track="${trackKey}"]`);
-                const btnIcon = card.querySelector('.track-toggle-btn i');
-
-                if (sound.isPlaying) {
-                    sound.audio.pause();
-                    sound.isPlaying = false;
-                    card.classList.remove('active');
-                    btnIcon.className = 'fa-solid fa-play';
-                } else {
-                    sound.audio.play().catch(() => {});
-                    sound.isPlaying = true;
-                    card.classList.add('active');
-                    btnIcon.className = 'fa-solid fa-pause';
-                }
-            }
-
             /* TASKS */
             function renderTasks() {
                 DOM.taskListContainer.innerHTML = '';
@@ -1031,7 +842,7 @@
                 if (STATE.tasks.length === 0) {
                     DOM.taskListContainer.innerHTML = `
                         <div class="empty-state">
-                            <i class="fa-regular fa-calendar-check" style="font-size: 24px; margin-bottom: 8px;"></i>
+                            <i class="fa-regular fa-calendar-check" style="font-size: 28px; margin-bottom: 12px; color: var(--text-tertiary);"></i>
                             <p>No assignments queued up. All caught up!</p>
                         </div>
                     `;
@@ -1148,7 +959,6 @@
                 setInterval(updateClockAndGreeting, 1000);
 
                 renderTimer();
-                initAmbientSounds();
                 renderTasks();
                 bindEvents();
             }
