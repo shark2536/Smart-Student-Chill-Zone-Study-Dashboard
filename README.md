@@ -4,17 +4,6 @@ A minimalist, high-performance web-based productivity dashboard designed for stu
 
 ---
 
-## 💡 Naming Suggestions for `index.html`
-
-If you are looking to rename `index.html` to better reflect the purpose of the project (or for setup within multi-page applications), consider the following options:
-
-1. **`dashboard.html`** *(Recommended)* — Direct and clear, indicating the main dashboard entry point.
-2. **`study-dashboard.html`** — Specific to the application's domain (education and study tracking).
-3. **`focus-app.html`** — Focuses on the core feature (Pomodoro Focus Timer).
-4. **`app.html`** — Clean and standard for single-page web applications (SPA).
-
----
-
 ## ✨ Features
 
 ### ⏱️ Liquid Focus Timer
