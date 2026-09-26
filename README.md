@@ -1,95 +1,91 @@
-# 🎓 Smart Student Chill Zone & Study Dashboard
+# 🎓 Smart Student Focus & Study Dashboard
 
-> **Minimalist, Apple-inspired productivity dashboard built for students.**  
-> Effortlessly manage your assignments, stay focused with an aesthetic Pomodoro timer, and create the perfect study atmosphere with ambient sounds.
+A minimalist, high-performance web-based productivity dashboard designed for students. Built following **Apple Liquid Glass / Glassmorphism Design Standards**, this dashboard combines a Pomodoro focus timer with dynamic physics animations and a task management system.
 
 ---
 
-## 📸 Preview & Aesthetic
+## 💡 Naming Suggestions for `index.html`
 
-Designed with **Apple's Human Interface Guidelines** in mind:
-- 🤍 **Clean White/Light & Dark Theme** with smooth transitions
-- 🌫️ **Glassmorphism UI** using backdrop filters and soft gradients
-- 📱 **Fully Responsive** layout optimized for desktop, tablet, and mobile screens
+If you are looking to rename `index.html` to better reflect the purpose of the project (or for setup within multi-page applications), consider the following options:
+
+1. **`dashboard.html`** *(Recommended)* — Direct and clear, indicating the main dashboard entry point.
+2. **`study-dashboard.html`** — Specific to the application's domain (education and study tracking).
+3. **`focus-app.html`** — Focuses on the core feature (Pomodoro Focus Timer).
+4. **`app.html`** — Clean and standard for single-page web applications (SPA).
 
 ---
 
 ## ✨ Features
 
-- **⏱️ Apple Watch-Style Pomodoro Timer**
-  - Switch between 25-min Focus, 5-min Short Break, and 15-min Long Break.
-  - Visual circular progress ring with custom audio chime notification.
+### ⏱️ Liquid Focus Timer
+* **3 Focus Modes**: Focus (25m), Short Break (5m), and Long Break (15m).
+* **Dual-Interaction Segmented Control**:
+  * **Tap/Click**: Smooth CSS spring sliding animation to the selected mode.
+  * **Drag/Slide**: Real-time fluid gesture tracking with boundary clamping (no overflowing) and spring snapping.
+* **Visual Progress Ring**: Dynamic SVG circle with theme-responsive color transitions.
+* **Audio & Visual Feedback**: Web Audio API chime sound effect and celebratory confetti animation upon completion.
 
-- **🎧 Ambient Sound Generator (Chill Zone)**
-  - Built-in sound generator (Rain, Cafe, Ocean Waves).
-  - Individual play/pause toggles and volume sliders with sound mixing capability.
+### 📋 Assignment & Task Manager
+* **Task Creation**: Track assignments by title, subject tag (`Math`, `Programming`, `English`, `Science`, `General`), and deadline.
+* **Smart Deadline Badges**: Automatically categorizes tasks into `Overdue`, `Due < 24h`, `Due < 3 Days`, or `Upcoming`.
+* **Local Persistence**: Saves all tasks seamlessly in browser `localStorage`.
+* **Interactive Physics**: Custom micro-animations on task completion and deletion.
 
-- **📌 Smart Assignment Tracker**
-  - Track school tasks with dynamic deadline indicators:
-    - 🔴 **Overdue / Due in < 24 Hours**
-    - 🟠 **Due in < 3 Days**
-    - 🟢 **Due Later**
-  - Automatic persistent data storage using browser `localStorage`.
-
-- **🌤️ Dynamic Greeting & Live Clock**
-  - Personal greeting adapted to your local system time.
-  - Minimalist real-time digital clock and calendar widget.
-
----
-
-## 🛠️ Tech Stack
-
-This project was built using pure web technologies to ensure zero-dependency overhead and high execution performance:
-
-- **HTML5** – Semantic markup and accessible structure.
-- **CSS3** – Custom properties (variables), CSS Grid/Flexbox, and Glassmorphism effects.
-- **Vanilla JavaScript (ES6+)** – State management, DOM manipulation, Web Audio API, and LocalStorage integration.
-
-> **Note:** All dependencies are embedded within a single `index.html` file for ease of deployment and study.
+### 🎨 Apple Liquid Glass UI & Personalization
+* **Glassmorphism**: Multi-layered backdrop blurs, ambient gradients, and specular highlights.
+* **Custom Liquid Physics Engine**: Custom touch/pointer physics engine giving elements weight, squash-and-stretch elasticity, and inertia on press or drag.
+* **Dark / Light Theme**: Dynamic theme switcher saved to `localStorage`.
+* **Personalized Greeting**: Editable student name and real-time clock.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Tech Stack
 
-No installation or complex build tools needed!
+* **HTML5** — Semantic structure.
+* **CSS3** — Custom properties (CSS variables), CSS Grid, Flexbox, and complex spring animations (`cubic-bezier`).
+* **JavaScript (Vanilla ES6+)** — Single-file architecture using an IIFE module pattern, Web Pointer Events API, and Web Audio API.
+* **External CDN Resources**:
+  * [Font Awesome 6.4.0](https://fontawesome.com/) — UI Icons.
+  * [Canvas Confetti](https://github.com/catdad/canvas-confetti) — Task completion confetti effect.
+  * [Inter / SF Pro Fonts](https://fonts.google.com/specimen/Inter) — Typography.
 
-1. **Clone or Download** this repository:
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+No node packages, build steps, or local servers are required. The application runs natively in any modern browser.
+
+### Installation
+1. Clone or download the repository:
    ```bash
-   git clone https://github.com/your-username/smart-student-dashboard.git
+   git clone https://github.com/your-username/student-focus-dashboard.git
    ```
-2. **Open the Project:**
-   Simply double-click the `index.html` file or open it in any modern web browser (Google Chrome, Safari, Microsoft Edge, Brave, Firefox).
+2. Open `index.html` (or your renamed file like `dashboard.html`) directly in any Web Browser (Chrome, Safari, Edge, Firefox).
 
 ---
 
-## 📝 License
+## 📂 File Structure
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
-
-```
-MIT License
-
-Copyright (c) 2026 
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+```text
+├── index.html            # Main entry point (All-in-one HTML, CSS, and JS)
+└── README.md             # Project documentation
 ```
 
 ---
 
-<p center>Made with ❤️ for vocational high school (SMK) students.</p>
+## 📖 Usage Guide
+
+1. **Set Name**: Click on the underlined **"Student"** text in the header to set your name.
+2. **Focus Session**: 
+   * Click or drag the mode selector (`Focus`, `Short Break`, `Long Break`).
+   * Hit **Start** to initiate the timer.
+3. **Add Tasks**:
+   * Fill out the assignment form on the right panel and click **Add**.
+   * Check off tasks upon completion to trigger the confetti animation.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. Feel free to modify and adapt for personal or educational use.
