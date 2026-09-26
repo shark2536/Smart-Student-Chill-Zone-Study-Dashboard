@@ -18,24 +18,24 @@
 
     <style>
         /* ==========================================================================
-           1. CSS VARIABLES & GLASSMORPHISM THEME TOKENS
+           1. CSS VARIABLES & LIQUID GLASS TOKENS
            ========================================================================== */
         :root {
-            /* Light Glass Theme */
-            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(216, 224, 255, 0.8) 0%, rgba(255, 225, 240, 0.6) 45%, rgba(245, 245, 247, 1) 90%);
-            --surface-glass: rgba(255, 255, 255, 0.45);
-            --surface-glass-hover: rgba(255, 255, 255, 0.65);
-            --border-glass: rgba(255, 255, 255, 0.6);
-            --shadow-glass: 0 12px 40px rgba(31, 38, 135, 0.07);
+            /* Light Liquid Fluid Background */
+            --bg-gradient: radial-gradient(circle at 15% 15%, #E0C3FC 0%, #8EC5FC 40%, #E0F2FE 80%);
+            --surface-liquid: rgba(255, 255, 255, 0.45);
+            --surface-liquid-hover: rgba(255, 255, 255, 0.65);
+            --border-liquid: rgba(255, 255, 255, 0.65);
+            --shadow-liquid: 0 20px 50px rgba(31, 38, 135, 0.12);
             
-            --input-glass-bg: rgba(255, 255, 255, 0.35);
-            --input-glass-border: rgba(255, 255, 255, 0.5);
+            --input-liquid-bg: rgba(255, 255, 255, 0.35);
+            --input-liquid-border: rgba(255, 255, 255, 0.5);
 
             --text-primary: #1D1D1F;
-            --text-secondary: #515154;
-            --text-tertiary: #86868B;
+            --text-secondary: #424245;
+            --text-tertiary: #6E6E73;
 
-            /* Accent Colors with Glass Translucency */
+            /* Liquid Accents */
             --accent-blue: #0071E3;
             --accent-blue-glass: rgba(0, 113, 227, 0.85);
             --accent-green: #34C759;
@@ -44,36 +44,36 @@
             --accent-purple: #AF52DE;
             --accent-active: var(--accent-blue);
 
-            /* Refraction Tokens */
+            /* Liquid Highlights & Refraction */
             --blur-amount: 25px;
-            --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(0, 0, 0, 0.03);
+            --glass-specular: inset 0 1px 2px rgba(255, 255, 255, 0.9), inset 0 -1px 2px rgba(0, 0, 0, 0.05);
 
             /* Transitions */
             --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-fast: 0.2s var(--ease-apple);
-            --transition-smooth: 0.4s var(--ease-apple);
+            --transition-fast: 0.25s var(--ease-apple);
+            --transition-smooth: 0.45s var(--ease-apple);
         }
 
         [data-theme="dark"] {
-            /* Dark Glass Theme */
-            --bg-gradient: radial-gradient(circle at 80% 10%, rgba(40, 30, 75, 0.8) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(0, 0, 0, 1) 100%);
-            --surface-glass: rgba(30, 30, 35, 0.45);
-            --surface-glass-hover: rgba(45, 45, 52, 0.55);
-            --border-glass: rgba(255, 255, 255, 0.15);
-            --shadow-glass: 0 16px 40px rgba(0, 0, 0, 0.45);
+            /* Dark Liquid Fluid Background */
+            --bg-gradient: radial-gradient(circle at 80% 20%, #2E0854 0%, #0F172A 50%, #05050A 100%);
+            --surface-liquid: rgba(28, 28, 38, 0.48);
+            --surface-liquid-hover: rgba(45, 45, 60, 0.62);
+            --border-liquid: rgba(255, 255, 255, 0.18);
+            --shadow-liquid: 0 24px 60px rgba(0, 0, 0, 0.55);
 
-            --input-glass-bg: rgba(255, 255, 255, 0.07);
-            --input-glass-border: rgba(255, 255, 255, 0.15);
+            --input-liquid-bg: rgba(255, 255, 255, 0.08);
+            --input-liquid-border: rgba(255, 255, 255, 0.18);
 
             --text-primary: #F5F5F7;
             --text-secondary: #A1A1A6;
             --text-tertiary: #6E6E73;
 
-            --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+            --glass-specular: inset 0 1px 1px rgba(255, 255, 255, 0.35), inset 0 -1px 2px rgba(0, 0, 0, 0.4);
         }
 
         /* ==========================================================================
-           2. GLOBAL BASE STYLES & RESET
+           2. GLOBAL BASE STYLES
            ========================================================================== */
         * {
             box-sizing: border-box;
@@ -94,93 +94,104 @@
             padding: 24px;
             gap: 24px;
             transition: background var(--transition-smooth), color var(--transition-smooth);
+            overflow-x: hidden;
+            user-select: none;
         }
 
-        /* Pure Glass Component Base */
-        .glass-panel {
-            background: var(--surface-glass);
-            backdrop-filter: blur(var(--blur-amount)) saturate(190%);
-            -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(190%);
-            border-radius: 22px;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-glass), var(--glass-highlight);
-            transition: all var(--transition-fast);
+        /* Fixed Stable Liquid Cards (No overall dragging to keep grid structure solid) */
+        .liquid-card {
+            background: var(--surface-liquid);
+            backdrop-filter: blur(var(--blur-amount)) saturate(200%);
+            -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(200%);
+            border-radius: 26px;
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--shadow-liquid), var(--glass-specular);
+            transition: background var(--transition-fast), border-color var(--transition-fast);
         }
 
-        .glass-panel-interactive:hover {
-            background: var(--surface-glass-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Glass Input Fields */
+        /* Inputs */
         input, select {
             font-family: inherit;
             outline: none;
-            border: 1px solid var(--input-glass-border);
-            background: var(--input-glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--input-liquid-border);
+            background: var(--input-liquid-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: var(--text-primary);
-            border-radius: 12px;
-            padding: 11px 16px;
+            border-radius: 14px;
+            padding: 12px 18px;
             font-size: 14px;
-            box-shadow: var(--glass-highlight);
-            transition: all var(--transition-fast);
+            box-shadow: var(--glass-specular);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+            user-select: text;
         }
 
         input:focus, select:focus {
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.25), var(--glass-highlight);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.28), var(--glass-specular);
         }
 
-        /* Glass Buttons */
+        /* Buttons Base Styling */
         button {
             font-family: inherit;
             border: none;
             outline: none;
             cursor: pointer;
             border-radius: 999px;
-            transition: all var(--transition-fast);
+            touch-action: none;
         }
 
-        button:active {
-            transform: scale(0.96);
-        }
-
-        .glass-btn-primary {
+        .liquid-btn-primary {
             background: var(--accent-blue-glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
             font-weight: 600;
         }
 
-        .glass-btn-primary:hover {
-            background: var(--accent-blue);
-            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .glass-btn-secondary {
-            background: var(--input-glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .liquid-btn-secondary {
+            background: var(--input-liquid-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: var(--text-primary);
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--glass-highlight);
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--glass-specular);
             font-weight: 500;
         }
 
-        .glass-btn-secondary:hover {
-            background: var(--surface-glass-hover);
+        /* ==========================================================================
+           3. INTERACTIVE LIQUID STRETCH & JIGGLE PHYSICS (BUTTONS & SLIDER)
+           ========================================================================== */
+        .interactive-liquid-target {
+            will-change: transform;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .interactive-liquid-target:active {
+            cursor: grabbing;
+        }
+
+        @keyframes liquidJiggleSmooth {
+            0%   { transform: scale(1, 1) rotate(0deg); }
+            20%  { transform: scale(1.12, 0.88) rotate(2deg); }
+            40%  { transform: scale(0.92, 1.08) rotate(-1.5deg); }
+            60%  { transform: scale(1.04, 0.96) rotate(0.8deg); }
+            80%  { transform: scale(0.98, 1.02) rotate(-0.3deg); }
+            100% { transform: scale(1, 1) rotate(0deg); }
+        }
+
+        .jiggling {
+            animation: liquidJiggleSmooth 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         /* ==========================================================================
-           3. HEADER & DYNAMIC GREETING WIDGET
+           4. HEADER & DASHBOARD LAYOUT
            ========================================================================== */
         header.dashboard-header {
-            padding: 20px 28px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -208,12 +219,8 @@
             cursor: pointer;
             padding: 0 6px;
             border-radius: 6px;
-            background: rgba(0, 113, 227, 0.08);
+            background: rgba(0, 113, 227, 0.1);
             transition: background var(--transition-fast);
-        }
-
-        .editable-name:hover {
-            background: rgba(0, 113, 227, 0.18);
         }
 
         .live-date-subtext {
@@ -233,24 +240,24 @@
             font-size: 16px;
             font-weight: 600;
             padding: 10px 18px;
-            background: var(--input-glass-bg);
+            background: var(--input-liquid-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-radius: 14px;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--glass-highlight);
+            border-radius: 16px;
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--glass-specular);
             letter-spacing: 0.05em;
         }
 
         .theme-toggle-btn {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
-            background: var(--input-glass-bg);
+            background: var(--input-liquid-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--glass-highlight);
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--glass-specular);
             color: var(--text-primary);
             display: flex;
             align-items: center;
@@ -258,14 +265,6 @@
             font-size: 18px;
         }
 
-        .theme-toggle-btn:hover {
-            background: var(--surface-glass-hover);
-            color: var(--accent-blue);
-        }
-
-        /* ==========================================================================
-           4. MAIN GRID LAYOUT
-           ========================================================================== */
         main.dashboard-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -284,10 +283,10 @@
         }
 
         .dashboard-section {
-            padding: 28px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 26px;
         }
 
         .section-header {
@@ -310,7 +309,7 @@
         }
 
         /* ==========================================================================
-           5. GLASSMORPHIC POMODORO TIMER
+           5. LIQUID POMODORO FOCUS TIMER & INTERACTIVE SLIDING BAR
            ========================================================================== */
         .timer-container {
             display: flex;
@@ -322,33 +321,33 @@
             margin: auto 0;
         }
 
-        /* Glass Segmented Control with Animated Pill */
+        /* Interactive Segmented Control Track */
         .timer-modes {
             position: relative;
             display: flex;
-            background: var(--input-glass-bg);
+            background: var(--input-liquid-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            padding: 4px;
+            padding: 5px;
             border-radius: 999px;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--glass-highlight);
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--glass-specular);
             width: 100%;
             max-width: 340px;
         }
 
         .sliding-pill-indicator {
             position: absolute;
-            top: 4px;
-            left: 4px;
-            height: calc(100% - 8px);
-            width: calc((100% - 8px) / 3);
-            background: var(--surface-glass-hover);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            top: 5px;
+            left: 5px;
+            height: calc(100% - 10px);
+            width: calc((100% - 10px) / 3);
+            background: var(--surface-liquid-hover);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 999px;
-            border: 1px solid var(--border-glass);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08), var(--glass-highlight);
+            border: 1px solid var(--border-liquid);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12), var(--glass-specular);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-smooth);
             z-index: 1;
             pointer-events: none;
@@ -357,7 +356,7 @@
         .mode-btn {
             position: relative;
             flex: 1;
-            padding: 8px 12px;
+            padding: 9px 14px;
             font-size: 13px;
             font-weight: 600;
             background: transparent;
@@ -390,7 +389,7 @@
 
         .ring-bg {
             fill: none;
-            stroke: var(--input-glass-border);
+            stroke: var(--input-liquid-border);
             stroke-width: 10;
         }
 
@@ -401,7 +400,7 @@
             stroke-linecap: round;
             stroke-dasharray: 565.48;
             stroke-dashoffset: 0;
-            filter: drop-shadow(0 0 8px rgba(0, 113, 227, 0.4));
+            filter: drop-shadow(0 0 10px rgba(0, 113, 227, 0.45));
             transition: stroke-dashoffset 0.3s linear, stroke 0.5s var(--ease-apple);
         }
 
@@ -435,22 +434,22 @@
 
         .timer-action-controls {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             align-items: center;
         }
 
         .timer-action-controls .btn-primary-action {
-            padding: 12px 28px;
+            padding: 12px 30px;
             font-size: 15px;
         }
 
         .timer-action-controls .btn-secondary-action {
-            padding: 12px 20px;
+            padding: 12px 22px;
             font-size: 14px;
         }
 
         /* ==========================================================================
-           6. GLASSMORPHIC ASSIGNMENT TRACKER
+           6. ASSIGNMENT TRACKER
            ========================================================================== */
         .task-input-form {
             display: flex;
@@ -474,7 +473,7 @@
         }
 
         .btn-add-task {
-            padding: 0 20px;
+            padding: 0 22px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -489,25 +488,19 @@
             padding-right: 4px;
         }
 
-        /* Glass Task Card */
         .task-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 18px;
-            border-radius: 16px;
-            background: var(--input-glass-bg);
+            padding: 16px 20px;
+            border-radius: 18px;
+            background: var(--input-liquid-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--glass-highlight);
+            border: 1px solid var(--border-liquid);
+            box-shadow: var(--glass-specular);
             gap: 12px;
             transition: all var(--transition-fast);
-        }
-
-        .task-item:hover {
-            background: var(--surface-glass-hover);
-            transform: translateY(-1px);
         }
 
         .task-left {
@@ -529,14 +522,14 @@
             justify-content: center;
             transition: all var(--transition-fast);
             flex-shrink: 0;
-            background: var(--input-glass-bg);
+            background: var(--input-liquid-bg);
         }
 
         .task-item.completed .task-checkbox {
             background: var(--accent-green);
             border-color: var(--accent-green);
             color: #FFFFFF;
-            box-shadow: 0 2px 8px rgba(52, 199, 89, 0.4);
+            box-shadow: 0 2px 10px rgba(52, 199, 89, 0.45);
         }
 
         .task-info {
@@ -567,19 +560,17 @@
             color: var(--text-secondary);
         }
 
-        /* Glass Subject Pill */
         .subject-tag {
-            background: rgba(0, 113, 227, 0.12);
+            background: rgba(0, 113, 227, 0.14);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 113, 227, 0.2);
+            border: 1px solid rgba(0, 113, 227, 0.25);
             color: var(--accent-blue);
             padding: 2px 8px;
             border-radius: 6px;
             font-weight: 600;
         }
 
-        /* Glass Deadline Badges */
         .deadline-badge {
             font-size: 11px;
             padding: 4px 10px;
@@ -597,17 +588,17 @@
         .badge-red { 
             background: rgba(255, 59, 48, 0.15); 
             color: var(--accent-red); 
-            border-color: rgba(255, 59, 48, 0.25);
+            border-color: rgba(255, 59, 48, 0.3);
         }
         .badge-orange { 
             background: rgba(255, 149, 0, 0.15); 
             color: var(--accent-orange); 
-            border-color: rgba(255, 149, 0, 0.25);
+            border-color: rgba(255, 149, 0, 0.3);
         }
         .badge-green { 
             background: rgba(52, 199, 89, 0.15); 
             color: var(--accent-green); 
-            border-color: rgba(52, 199, 89, 0.25);
+            border-color: rgba(52, 199, 89, 0.3);
         }
 
         .btn-delete-task {
@@ -633,23 +624,20 @@
             font-size: 14px;
         }
 
-        /* ==========================================================================
-           7. FOOTER
-           ========================================================================== */
         footer.dashboard-footer {
             margin-top: auto;
             text-align: center;
             padding: 16px;
             font-size: 13px;
             color: var(--text-secondary);
-            border-top: 1px solid var(--border-glass);
+            border-top: 1px solid var(--border-liquid);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Glass Panel -->
-    <header class="glass-panel dashboard-header">
+    <!-- Header -->
+    <header class="liquid-card dashboard-header">
         <div class="user-greeting">
             <h1 class="greeting-headline">
                 <span id="greeting-text">Good Morning</span>, 
@@ -660,7 +648,8 @@
 
         <div class="header-controls">
             <div id="live-clock" class="live-clock-badge">00:00:00</div>
-            <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+            <!-- Theme Toggle Button (Interactive Liquid) -->
+            <button id="theme-toggle-btn" class="theme-toggle-btn interactive-liquid-target" aria-label="Toggle Dark/Light Mode">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
@@ -670,13 +659,14 @@
     <main class="dashboard-grid">
 
         <!-- Focus Timer Column -->
-        <section class="glass-panel dashboard-section col-span-5">
+        <section class="liquid-card dashboard-section col-span-5">
             <div class="section-header">
                 <h2 class="section-title"><i class="fa-solid fa-stopwatch"></i> Focus Timer</h2>
             </div>
 
             <div class="timer-container">
-                <div class="timer-modes" id="timer-modes-container">
+                <!-- Segmented Control Bar (Interactive Liquid) -->
+                <div class="timer-modes interactive-liquid-target" id="timer-modes-container">
                     <div id="sliding-pill" class="sliding-pill-indicator"></div>
                     <button class="mode-btn active" data-mode="focus" data-index="0">Focus</button>
                     <button class="mode-btn" data-mode="shortBreak" data-index="1">Short Break</button>
@@ -694,15 +684,16 @@
                     </div>
                 </div>
 
+                <!-- Action Control Buttons (Interactive Liquid) -->
                 <div class="timer-action-controls">
-                    <button id="timer-start-btn" class="glass-btn-primary btn-primary-action"><i class="fa-solid fa-play"></i> Start</button>
-                    <button id="timer-reset-btn" class="glass-btn-secondary btn-secondary-action"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                    <button id="timer-start-btn" class="liquid-btn-primary btn-primary-action interactive-liquid-target"><i class="fa-solid fa-play"></i> Start</button>
+                    <button id="timer-reset-btn" class="liquid-btn-secondary btn-secondary-action interactive-liquid-target"><i class="fa-solid fa-rotate-right"></i> Reset</button>
                 </div>
             </div>
         </section>
 
         <!-- Task Tracker Column -->
-        <section class="glass-panel dashboard-section col-span-7">
+        <section class="liquid-card dashboard-section col-span-7">
             <div class="section-header">
                 <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Assignments & Tasks</h2>
             </div>
@@ -718,7 +709,8 @@
                     <option value="General">General</option>
                 </select>
                 <input type="datetime-local" id="task-deadline-input" required>
-                <button type="submit" class="glass-btn-primary btn-add-task"><i class="fa-solid fa-plus"></i> Add</button>
+                <!-- Add Task Button (Interactive Liquid) -->
+                <button type="submit" class="liquid-btn-primary btn-add-task interactive-liquid-target"><i class="fa-solid fa-plus"></i> Add</button>
             </form>
 
             <div id="task-list-container" class="task-list-container"></div>
@@ -727,7 +719,7 @@
     </main>
 
     <footer class="dashboard-footer">
-        <p>Smart Student Focus & Study Dashboard &bull; Designed following Apple HIG Glassmorphism Standards</p>
+        <p>Smart Student Focus & Study Dashboard &bull; Designed following Apple Liquid Glass Standards</p>
     </footer>
 
     <!-- Logic Engine -->
@@ -779,6 +771,59 @@
                 taskDeadlineInput: document.getElementById('task-deadline-input'),
                 taskListContainer: document.getElementById('task-list-container')
             };
+
+            /* ==================================================================
+               LIQUID GLASS PHYSICS - SPECIFICALLY TARGETED TO BUTTONS & SLIDER
+               ================================================================== */
+            function bindLiquidPhysics(element) {
+                let startX = 0, startY = 0;
+                let isDragging = false;
+
+                function onPointerDown(e) {
+                    isDragging = true;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    element.classList.remove('jiggling');
+                    try { element.setPointerCapture(e.pointerId); } catch(err) {}
+                }
+
+                function onPointerMove(e) {
+                    if (!isDragging) return;
+                    const deltaX = e.clientX - startX;
+                    const deltaY = e.clientY - startY;
+
+                    // Elastic stretching based on drag distance
+                    const stretchX = 1 + Math.min(Math.abs(deltaX) * 0.003, 0.35);
+                    const stretchY = 1 + Math.min(Math.abs(deltaY) * 0.003, 0.35);
+                    const skewX = Math.max(Math.min(deltaX * 0.08, 15), -15);
+
+                    element.style.transform = `translate(${deltaX * 0.4}px, ${deltaY * 0.4}px) scale(${stretchX}, ${stretchY}) skew(${skewX}deg)`;
+                }
+
+                function onPointerUp(e) {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    try { element.releasePointerCapture(e.pointerId); } catch(err) {}
+
+                    // Reset position and play elastic bounce/jiggle animation
+                    element.style.transform = '';
+                    element.classList.add('jiggling');
+
+                    setTimeout(() => {
+                        element.classList.remove('jiggling');
+                    }, 650);
+                }
+
+                element.addEventListener('pointerdown', onPointerDown);
+                element.addEventListener('pointermove', onPointerMove);
+                element.addEventListener('pointerup', onPointerUp);
+                element.addEventListener('pointercancel', onPointerUp);
+            }
+
+            function initLiquidTargets() {
+                const targets = document.querySelectorAll('.interactive-liquid-target');
+                targets.forEach(bindLiquidPhysics);
+            }
 
             /* THEME & GREETING */
             function initTheme() {
@@ -946,10 +991,14 @@
                             </div>
                         </div>
                         ${deadlineBadge}
-                        <button class="btn-delete-task" onclick="window.appDeleteTask(${index})">
+                        <button class="btn-delete-task interactive-liquid-target" onclick="window.appDeleteTask(${index})">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     `;
+
+                    // Bind physics to delete button
+                    const delBtn = taskEl.querySelector('.btn-delete-task');
+                    if (delBtn) bindLiquidPhysics(delBtn);
 
                     DOM.taskListContainer.appendChild(taskEl);
                 });
@@ -1039,6 +1088,7 @@
                 renderTimer();
                 renderTasks();
                 bindEvents();
+                initLiquidTargets();
             }
 
             document.addEventListener('DOMContentLoaded', init);
