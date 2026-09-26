@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student Focus & Study Dashboard</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="liquid-card dashboard-header">
+        <div class="user-greeting">
+            <h1 class="greeting-headline">
+                <span id="greeting-text">Good Morning</span>, 
+                <span id="user-name-display" class="editable-name" title="Click to edit name">Student</span>
+            </h1>
+            <p id="live-date-display" class="live-date-subtext">Loading date...</p>
+        </div>
+        <div class="header-controls">
+            <div id="live-clock" class="live-clock-badge">00:00:00</div>
+            <button id="theme-toggle-btn" class="theme-toggle-btn lq lq-round" aria-label="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- Section: Timer -->
+        <section class="liquid-card dashboard-section col-span-5">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-stopwatch"></i> Focus Timer</h2>
+            </div>
+            <div class="timer-container">
+                <div class="timer-modes" id="timer-modes-container">
+                    <div id="sliding-pill" class="sliding-pill-indicator"></div>
+                    <button class="mode-btn active" data-mode="focus" data-index="0">Focus</button>
+                    <button class="mode-btn" data-mode="shortBreak" data-index="1">Short Break</button>
+                    <button class="mode-btn" data-mode="longBreak" data-index="2">Long Break</button>
+                </div>
+                <div class="ring-wrapper">
+                    <svg class="timer-svg" viewBox="0 0 200 200">
+                        <circle class="ring-bg" cx="100" cy="100" r="90"></circle>
+                        <circle id="timer-progress-ring" class="ring-progress" cx="100" cy="100" r="90"></circle>
+                    </svg>
+                    <div class="timer-display-content">
+                        <span id="timer-countdown" class="time-text">25:00</span>
+                        <span id="timer-state-label" class="timer-state-label">Ready</span>
+                    </div>
+                </div>
+                <div class="timer-action-controls">
+                    <button id="timer-start-btn" class="liquid-btn-primary btn-primary-action lq lq-primary"><i class="fa-solid fa-play"></i> Start</button>
+                    <button id="timer-reset-btn" class="liquid-btn-secondary btn-secondary-action lq lq-secondary"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Tasks -->
+        <section class="liquid-card dashboard-section col-span-7">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Assignments & Tasks</h2>
+            </div>
+            <form id="task-form" class="task-input-form">
+                <input type="text" id="task-title-input" placeholder="Assignment title..." required>
+                <select id="task-subject-input" required>
+                    <option value="" disabled selected>Subject</option>
+                    <option value="Math">Math</option>
+                    <option value="Programming">Programming</option>
+                    <option value="English">English</option>
+                    <option value="Science">Science</option>
+                    <option value="General">General</option>
+                </select>
+                <input type="datetime-local" id="task-deadline-input" required>
+                <button type="submit" class="liquid-btn-primary btn-add-task lq lq-primary"><i class="fa-solid fa-plus"></i> Add</button>
+            </form>
+            <div id="task-list-container" class="task-list-container"></div>
+        </section>
+    </main>
+
+    <footer class="dashboard-footer">
+        <p>Smart Student Focus & Study Dashboard &bull; Designed following Apple Liquid Glass Standards</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
